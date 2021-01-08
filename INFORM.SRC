@@ -1,0 +1,63 @@
+
+       HOW TO DEAL WITH THIS STARGATE MESS
+
+       1) ALL FILES HAVE A NUMBER SUFFIX.   THIS IS THE
+              BACKUP IDENTIFICATION NUMBER OF THE FILE.
+              THESE NUMBERS WILL NOT BE REFERRED TO HERE.
+
+       2) THERE IS A MASTER EQUATE FILE CALLED SPHR.  FOR
+              *ALL* ASSEMBLIES IT MUST PRECEDE THE REST OF
+              THE CODE.
+
+       3) THE 'BACKROUND' SYSTEM IS COMPOSED OF THE FILES
+              'RA' AND 'RB'.  IT MAY NOT BE FREELY EDITED, AS
+              THE ADDRESS REFERENCES INTO IT ARE FIXED.
+
+          TO GENERATE THE BACKGROUND OBJECT, ASSEMBLE:
+
+                       SPHR56,RA37,RB37   ($0000-$26XX)
+
+
+       4) THERE IS AN EQUATE FILE CALLED 'EQ'.  IT CONTAINS EQUATES
+              FOR THE ADDRESSES IN RA,RB AND MUST BE INCLUDED  
+              AFTER SPHR, AND BEFORE THE MAIN FILE ON *ALL* OTHER
+              ASSEMBLIES. E.G:
+
+                       RASM SPHR56,EQ4,TREK5
+
+       5) THE FILES TO ASSEMBLE IN THIS MANNER ARE:
+
+
+                       SAM16      ($2700-$2B4X)
+                       ET13       ($2C00-$321X)
+                       TREK5      ($3240-$341X)
+                       TREKC5     ($3440-$371X)
+                       MESS2      ($3740-$383X)
+                       BPS15      ($3840-$453X)
+                       LMA12      ($4540-$4F1A) 
+                       YF14       ($4F40-$5AAX)
+                       DN11       ($5AD0-$5F5X)
+                       SD51       ($5F80-$6FBX;$8F00-$8F5X)
+                       TEXT31     ($7000-$8C0X)
+
+       THE OBJECTS FROM THESE ASSEMBLIES MAY BE MERGED WITH THE
+       OBJECT FROM RA,RB TO FORM A FILE FROM 0 TO 8FFF.  WE CALL
+       THIS FILE 'DD.LO'.
+
+       6)  THE FOLLOWING FILES SHOULD ALSO BE ASSEMBLED WITH
+              SPHR AND EQ:
+
+                       ATTR9      ($DA00-$DEBC)
+                       LOG11      ($D000-$D931)
+                       TESTB12    ($E000-$E933)
+                       TESTC8     ($E940-$EF14;$F400-$F4XX)
+                       TEST12     ($F480-$FFFF)
+
+       THE OBJECTS FROM THESE ASSEMBLIES MAY BE MERGED TOGETHER
+       TO FORM AN OBJECT FILE FROM D000 TO FFFF.  WE CALL THIS
+       FILE 'DDD.LO'.
+
+PAUL G. DUSSAULT 
+11/23/81
+
+
